@@ -17,11 +17,12 @@
                                <ul class="dropdown-menu">
                                    <li><a href="/note/list">Find</a></li>
                                    <li><a href="/note/create">New</a></li>
+
                                </ul>
                            </li>
                            <li sec:authorize="hasRole('ROLE_ADMIN')" class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="/users">Users<span class="caret"></span></a>
                                <ul class="dropdown-menu">
-                                   <li><a href="/users">Find</a></li>
+                                   <li><a href="/users/list">Find</a></li>
                                    <li><a href="/users/registration">New</a></li>
                                </ul>
                            </li>

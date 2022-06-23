@@ -56,7 +56,7 @@ public class UserDao {
         this.userRole = userRole;
     }
 
-    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER,cascade=CascadeType.REMOVE )
     public Set<NoteDao> getNotes() {
         return notes;
     }

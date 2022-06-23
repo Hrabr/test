@@ -11,6 +11,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 import ua.goit.group2notes.user.UsersDetailsService;
 
 @Configuration
@@ -29,7 +30,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http
                 .csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/users/registration", "/login", "/logout").permitAll()
+                .antMatchers("/users/registration", "/login", "/logout","/note/share/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()

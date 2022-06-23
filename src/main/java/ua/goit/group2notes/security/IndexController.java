@@ -19,8 +19,13 @@ public class IndexController {
     public String getIndex() {
         return "index";
     }
+//
+//    @PostMapping("/login")
+//    public String loginA(){
+//        return "login";
+//    }
 
-    @GetMapping("/login")
+    @GetMapping ("/login")
     public String login(Model model, String error, String logout) {
         if (error != null) {
             model.addAttribute("error", "Your username or password is invalid");

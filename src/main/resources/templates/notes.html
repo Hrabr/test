@@ -9,9 +9,9 @@
         <div class="container">
             <form action="/note/edit">
                 <div class="form-group">
-                    <label for="Id">Note name:</label><br>
+                    <label for="id">Note name:</label><br>
                     <select class="form-control" id="id" name="id">
-                        <option disabled selected value> -- select note -- </option>
+                        <option value=""> -- select note -- </option>
                         <option th:each="note : ${notes}" th:value="${note.id}" th:text="${note.title}"></option>
                     </select>
                 </div>
@@ -53,7 +53,7 @@
                                 <div class="btn-group me-2" role="group" aria-label="Second group">
                                     <a th:href="@{/note/edit/{id}(id=${note.id})}" type="button" class="btn btn-warning">Edit</a>
                                     <a th:href="@{/note/delete/{id}(id=${note.id})}" type="button" class="btn btn-danger">Remove</a>
-                                    <button class="copyButton btn btn-info">Share</button>
+                                    <button th:if=="${note.accessType.type.equals('PUBLIC')}" class="copyButton btn btn-info">Share</button>
                                     <input class="linkToCopy" th:value="${share}+${note.id}" style="position: absolute; z-index: -999; opacity: 0;" />
                                 </div>
                             </div>

@@ -39,7 +39,7 @@ public class UserController {
         UserDto user = userService.getUserById(id);
         user.setPassword("Enter your password");
         model.put("user", user);
-        return "userEdit";
+        return "registrationR";
     }
 
     @PostMapping("/edit/{id}")
@@ -48,7 +48,7 @@ public class UserController {
         UserDto user = userService.getUserById(id);
         if (bindingResult.hasErrors()) {
             model.put("user", userDto);
-            return "userEdit";
+            return "registrationR";
         }
         user.setUsername(userDto.getUsername());
         if (!userDto.getPassword().equals("Enter your password")) {

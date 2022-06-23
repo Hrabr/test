@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xmlns:sec="http://www.w3.org/1999/xhtml"
+      xsi:schemaLocation="http://www.thymeleaf.org ">
+<html lang="en">
+<head th:insert="header">
+</head>
+
+<body>
+
+<div th:insert="navibar::navibar"></div>
+<div class="container">
+  <div class="row">
+    <div>
+      <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+        <div class="btn-group me-2" role="group" aria-label="Second group">
+          <a sec:authorize="hasRole('ROLE_ADMIN')" href="/users/list" type="button" class="btn btn-success">Back to users</a>
+
+        </div>
+      </div>
+    </div>
+  </div><br>
+  <form th:action="@{/users/edit/{id}(id=${user.id})}" th:object="${user}" method="post" >
+    <div class="form-group">
+      <div class="row">
+
+        <br>
+        <label >Username</label>
+        <input th:field="*{username}" type="text" class="form-control" id="username" placeholder="Username"/>
+        <p th:each="error: ${#fields.errors('username')}"
+           th:text="${error}" class="error">Validation error</p>
+        <br>
+        <label>Password</label>
+        <input th:field="*{password}" type="text" class="form-control" id="password" placeholder="Password"/>
+        <p th:each="error : ${#fields.errors('password')}"
+           th:text="${error}" class="error">Validation error</p>
+        <br>
+        <div sec:authorize="hasRole('ROLE_ADMIN')">
+          <select th:field="*{userRole}" class="form-control" >
+            <th:if test="${empty user.userRole}"><option value="" label="-- select role --"/></th:if>
+            <option th:value="ROLE_USER" th:text="User"></option>
+            <option th:value="ROLE_ADMIN" th:text="Admin"></option>
+          </select><br>
+          <errors path="role" class="error"/><br><br>
+        </div>
+      </div>
+      <div class="row">
+        <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+          <div class="btn-group me-2" role="group" aria-label="Second group">
+            <button type="submit" value="Submit" class="btn btn-primary">Save</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+</body>
+</html>

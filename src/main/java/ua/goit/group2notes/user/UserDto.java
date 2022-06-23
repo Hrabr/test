@@ -26,8 +26,8 @@ public class UserDto {
     }
 
 //    @NotEmpty(message = "Please, enter Username")
-    @Size(min = 5, max = 50, message = "Username must be minimum 5 characters long and no longer then 50")
-    @Pattern(regexp = "[a-zA-Z0-9]*", message = "Username must contains only letters or/and digits")
+//    @Size(min = 5, max = 50, message = "Username must be minimum 5 characters long and no longer then 50")
+//    @Pattern(regexp = "[a-zA-Z0-9]*", message = "Username must contains only letters or/and digits")
     public String getUsername() {
         return username;
     }
@@ -37,7 +37,7 @@ public class UserDto {
     }
 
 //    @NotEmpty(message = "Please, enter Password")
-    @Size(min = 8, max = 100, message = "Password must be minimum 8 characters long and no longer then 100")
+//    @Size(min = 8, max = 100, message = "Password must be minimum 8 characters long and no longer then 100")
     public String getPassword() {
         return password;
     }
